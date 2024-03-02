@@ -1,0 +1,98 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+//function Declaration 
+
+int list();
+void diposite();
+void withdraw();
+void trasfer();
+void CheckDetail();
+
+// varible Defined 
+
+int TotalAmmount = 1000;
+int Ammount,Aao,Tr;
+int TotalDiposite=0;
+int TotalWith=0;
+int TotalTr=0;
+
+//Main Function 
+
+void main ()
+{
+    while(1){
+        switch(list()){
+    case 1:
+    diposite();
+    TotalDiposite+=Ammount;
+    break;
+    case 2:
+    withdraw();
+    if(Aao<=TotalAmmount)
+        TotalWith+=Aao;
+    break;
+    case 3:
+    trasfer();
+    if(Tr<=TotalAmmount)
+    TotalTr +=Tr;
+    break;
+    case 4:
+    CheckDetail();
+    break;
+    case 5:
+         exit(0);
+    default: printf("Invalid Choice");
+ }
+    }
+ 
+}
+
+int list ()
+{
+  int n;
+  printf("\nState Bank of India in jaipur(302022)\n");
+  printf("Bank Services are avilable in Customer \n");
+  printf("---------------------------------------\n");
+  printf("\n");
+  printf ("Deposite Ammount -> Press 1\n");
+  printf ("Withdraw Ammount -> Press 2\n");
+  printf ("Transfer Ammount -> Press 3\n");
+  printf ("Check Details -> Press 4\n");
+  printf("Exit\n");
+  printf("Enter Your Choice: ");
+  scanf("%d",&n);
+  return(n);
+}
+
+// Function Defination
+
+void diposite(){
+    printf("\nEnter the Ammount you want to diposite: ");
+    scanf("%d",&Ammount);
+    TotalAmmount+=Ammount;
+}
+
+void withdraw(){
+    printf("Enter the withdraw Ammount : ");
+    scanf("%d",&Aao);
+    if(Aao<=TotalAmmount)
+    TotalAmmount-=Aao;
+    else
+    printf("\n Less Ammount withdraw is not possible");
+}
+void trasfer(){
+    printf("Enter the trasfer ammount : ");
+    scanf("%d",&Tr);
+    if(Tr<=TotalAmmount)
+    TotalAmmount-=Tr;
+    else
+    printf("\n Less ammount trasfer is not possible: ");
+}
+void CheckDetail(){
+    printf("Total Ammount =%d",TotalAmmount);
+    printf("\nTotal Diposited Ammount=%d",TotalDiposite);
+    printf("\nTotal withdraw Ammount=%d",TotalWith);
+    printf("\nTotal Transfered Ammount=%d",TotalTr);
+}
